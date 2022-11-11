@@ -13,7 +13,7 @@ async function getInfo(){
 async function salvaCadastro(dados){
     try {
       console.log(dados)
-      return await api.post("/clientes/salvar",{...dados});   
+      return await api.post("/produtos/salvar",{...dados});   
     } catch (error) {
       console.log("Error: "+error)
     }     
@@ -21,7 +21,7 @@ async function salvaCadastro(dados){
 
  async function getDados(){
   try {
-    return await api.get("/clientes/listar");   
+    return await api.get("/produtos/listar");   
   } catch (error) {
     console.log("Error: "+error)
   }     
@@ -29,7 +29,7 @@ async function salvaCadastro(dados){
 
 async function getDadosPorChave(key){
   try {
-    return await api.get("/clientes/listar/"+key);   
+    return await api.get("/produtos/listar/"+key);   
   } catch (error) {
     console.log("Error: "+error)
   }     

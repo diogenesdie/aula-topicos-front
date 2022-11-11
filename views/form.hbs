@@ -11,17 +11,42 @@
     <input type="text" name="codigo" value=""/>
     <label>Nome</label>
     <input type="text" name="nome" value=""/>
-    <label>Endereço</label>
-    <input type="text" name="endereco" value=""/>
+    <label>Descrição</label>
+    <input type="text" name="descricao" value="" maxlength="300"/>
+    <label>Unidade de Medida</label>
+    <select name="unidademedida">
+        <option value="UN">Unidade</option>
+        <option value="KG">Kg</option>
+        <option value="L">Litro</option>
+    </select>
+    <label>Preço</label>
+    <input type="number" name="precoun" value="" />
+    <label>Estoque</label>
+    <input type="number" name="estoque" value="" />
     <input type="submit" value="Salvar"/>
 </form>
 
 <form action="/buscarTodos" method="GET">
-    <label>Codigo</label>
-    <input type="text" name="codigo" disabled value="{{codigo}}"/>
-    <label>Nome</label>
-    <input type="text" name="nome" disabled value="{{nome}}"/>
-    <label>Endereço</label>
-    <input type="text" name="nome" disabled value="{{endereco}}"/>
-    <input type="submit" value="Buscar"/>
+    <input type="submit" value="Buscar Todos"/>
 </form>
+
+<table name="produtos"/>
+    <tr>
+        <th>Codigo</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Unidade de Medida</th>
+        <th>Preço</th>
+        <th>Estoque</th>
+    </tr>
+    {{#each produtos}}
+    <tr>
+        <td>{{codigo}}</td>
+        <td>{{nome}}</td>
+        <td>{{descricao}}</td>
+        <td>{{unidademedida}}</td>
+        <td>{{precoun}}</td>
+        <td>{{estoque}}</td>
+    </tr>
+    {{/each}}
+</table>

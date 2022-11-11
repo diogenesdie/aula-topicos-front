@@ -33,7 +33,7 @@ app.get("/", function(req,res){
 
 app.get("/info", async function(req,res){
     const response= await service.getInfo();
-    console.log(response.data.user);
+    console.log(response.data);
     res.render('form',{codigo_usuario:12345,nome_usuario:"joao"})
     
 });
@@ -42,7 +42,11 @@ app.post("/gravar", async function(req,res){
     
     const response= await service.salvaCadastro({codigo:req.body.codigo,
                                                  nome:req.body.nome,
-                                                 endereco:req.body.endereco});
+                                                descricao: req.body.descricao,
+                                                unidademedida: req.body.unidademedida,
+                                                precoun: req.body.precoun,
+                                                estoque: req.body.estoque
+                                            });
     console.log(response.data);
     res.render('form');
     
@@ -50,16 +54,13 @@ app.post("/gravar", async function(req,res){
 
 app.get("/buscarTodos", async function(req,res){
     const {data}= await service.getDados();
-    console.log(data);
-    res.render('form',data)
-    
+    res.render('form', {produtos: data})
 });
 
 app.get("/buscar/:key", async function(req,res){
     const key=req.params.key;
     const {data}= await service.getDadosPorChave(key);
-    console.log(data);
-    res.render('form',{data})
+    res.render('form',data[0])
     
 });
 
